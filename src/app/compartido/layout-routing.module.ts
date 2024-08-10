@@ -11,11 +11,14 @@ import {} from '../familia/familia.module';
 import { ListadoClasesComponent } from '../clase/pages/listado-clases/listado-clases.component';
 import { ListadoDepartamentoComponent } from '../departamento/pages/listado-departamento/listado-departamento.component';
 import { ListadoFamiliaComponent } from '../familia/pages/listado-familia/listado-familia.component';
+import { authGuard } from '../_guards/auth.guard';
 
 const routes : Routes = [
   {
     path: '', 
     component: LayoutComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [authGuard],
     children: [
         {
             path:'',
