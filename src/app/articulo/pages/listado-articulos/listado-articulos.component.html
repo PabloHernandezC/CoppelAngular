@@ -1,0 +1,32 @@
+<h1 class="m-2">Articulos</h1>
+<div class="content">
+
+    <mat-card class="m-2">
+        <mat-divider></mat-divider>
+        <mat-card-content class="m-2">
+            <form [formGroup]="formSKU">
+                <mat-form-field style="width: 33%;">
+                    <mat-label>Sku</mat-label>
+                    <input matInput formControlName="SKU" placeholder="Ingresar SKU..." #input autocomplete="off" 
+                    type="number" min="1" max="999999">
+                </mat-form-field>
+                <button mat-raised-button style="background-color: gold;" (click)="validar(0);" class="m-2" [disabled]="formSKU.invalid">
+                    <mat-icon mat-list-icon>search</mat-icon> Buscar
+                </button>
+                <button mat-raised-button style="background-color: green;" (click)="validar(1)" class="m-2" [disabled]="formSKU.invalid">
+                    <mat-icon mat-list-icon>add</mat-icon> Nuevo
+                </button>
+                <button mat-raised-button style="background-color: orange;" (click)="validar(2);" class="m-2" [disabled]="formSKU.invalid">
+                    <mat-icon mat-list-icon>edit</mat-icon> Editar
+                </button>
+                <button mat-raised-button style="background-color:red;" (click)="validar(3)" class="m-2" [disabled]="formSKU.invalid">
+                    <mat-icon mat-list-icon>delete_forever</mat-icon> Eliminar
+                </button>
+            
+            </form>
+
+
+        </mat-card-content>
+    </mat-card>
+
+</div>
