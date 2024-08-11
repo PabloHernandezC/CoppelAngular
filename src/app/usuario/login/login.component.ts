@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../servicios/usuario.service';
 import { CompartidoService } from '../../compartido/compartido.service';
 import { Login } from '../interfeces/login';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRegistroComponent } from '../modal-registro/modal-registro.component';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private usuarioService: UsuarioService,
-    private compartidoService: CompartidoService
+    private compartidoService: CompartidoService,
+    private dialog: MatDialog
   ){
     this.formLogin = this.fb.group({
       userName: ['',Validators.required],
@@ -47,7 +50,15 @@ export class LoginComponent {
         this.compartidoService.mostrarAlerta(error.error, 'Error!');
       } 
     })
-
   }
 
+  registro(){
+    this.dialog.open(ModalRegistroComponent,{disableClose: true, width: '400px'})
+    .afterClosed()
+      .subscribe((resultado) => {
+        if(resultado == 'true') {
+          this.router.navigate(['layout']);
+        }
+      })
+  }
 }

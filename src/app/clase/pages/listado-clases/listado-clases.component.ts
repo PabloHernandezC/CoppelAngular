@@ -56,7 +56,15 @@ export class ListadoClasesComponent implements OnInit, AfterViewInit {
           this._compartidoService.mostrarAlerta('No se encontraron datos', 'Advertencia')
         }
       },
-      error: (e) => {}
+      error: (e) => {
+        Swal.fire({
+          title: 'No se pudo obtener la lista de Departamentos!',
+          text: e.error.mensaje,
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Aceptar',
+        })
+      }
     })
   }
 
@@ -81,7 +89,15 @@ export class ListadoClasesComponent implements OnInit, AfterViewInit {
               this._compartidoService.mostrarAlerta('No se pudo eliminar la Clase ' + clase.nombreClase,'Error!')
             }
           }, 
-          error: (e) => {}
+          error: (e) => {
+            Swal.fire({
+              title: 'No se pudo actualizar la Departamento!',
+              text: e.error.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
+          }
         })
       }
     })

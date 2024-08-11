@@ -4,12 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { UsuarioService } from './servicios/usuario.service';
 import { CompartidoModule } from '../compartido/compartido.module';
 import { MaterialModule } from '../material/material.module';
+import { ModalRegistroComponent } from './modal-registro/modal-registro.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
+    ModalRegistroComponent,
   ],
   imports: [
     CommonModule,

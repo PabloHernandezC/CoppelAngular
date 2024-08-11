@@ -55,7 +55,15 @@ export class ListadoDepartamentoComponent implements OnInit, AfterViewInit {
           this._compartidoService.mostrarAlerta('No se encontraron datos', 'Advertencia')
         }
       },
-      error: (e) => {}
+      error: (e) => {
+        Swal.fire({
+          title: 'Error',
+          text: e.error,
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Aceptar'
+        });
+      }
     })
   }
 
@@ -99,9 +107,5 @@ export class ListadoDepartamentoComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
     this.obtenerDepartamentos();
-    this._departamentoServicio.obtenerId(6).subscribe({
-      next: data => console.log(data),
-      error: error => console.log(error)
-    })
   }
 }

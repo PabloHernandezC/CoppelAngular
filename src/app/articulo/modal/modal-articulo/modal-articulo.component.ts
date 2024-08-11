@@ -95,9 +95,6 @@ export class ModalArticuloComponent implements OnInit {
       this.idDepa = this.datosArticulo.nuevoArticulo.idDepartamento
       this.idCas = this.datosArticulo.nuevoArticulo.idClase
       this.esDeshabilitado = this.datosArticulo.nuevoArticulo.descontinuado == 1
-      
-      
-      console.log(this.formArticulo);
 
       if(this.datosArticulo.nuevoSKU === ''){
         this.formArticulo.disable()
@@ -124,7 +121,13 @@ export class ModalArticuloComponent implements OnInit {
             this.listaClases = data.resultado;
         },
         error: error => {
-          this._compartidoServico.mostrarAlerta(error.mensaje, "Error!")
+          Swal.fire({
+            title: 'Error',
+            text: error.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
         }
       });
     }
@@ -139,7 +142,13 @@ export class ModalArticuloComponent implements OnInit {
             this.listaFamilia = data.resultado;
         },
         error: error => {
-          this._compartidoServico.mostrarAlerta(error.mensaje, "Error!")
+          Swal.fire({
+            title: 'Error',
+            text: error.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
         }
       });
     }
@@ -189,11 +198,23 @@ export class ModalArticuloComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('El Articulo ha sido Creada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo Crear el Articulo','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Departamento!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {
-          this._compartidoServico.mostrarAlerta( e.error.errores,'No se pudo Crear el Articulo!');
+          Swal.fire({
+            title: 'Error',
+            text: e.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
         }
       })
     } else { //Editar
@@ -203,11 +224,23 @@ export class ModalArticuloComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('El Articulo ha sido Editada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo actualizar al Articulo','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Departamento!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {
-          this._compartidoServico.mostrarAlerta( e.error.errores,'No se pudo editar al Articulo!');
+          Swal.fire({
+            title: 'Error',
+            text: e.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
         }
       })
     }

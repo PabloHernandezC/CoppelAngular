@@ -70,7 +70,13 @@ export class ModalFamiliaComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('La Familia ha sido Creada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo Crear la Familia','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Familia!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {
@@ -91,7 +97,13 @@ export class ModalFamiliaComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('La Familia ha sido Editada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo actualizar la Familia','Error!');
+            Swal.fire({
+              title: 'No se pudo Editar la Familia!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {

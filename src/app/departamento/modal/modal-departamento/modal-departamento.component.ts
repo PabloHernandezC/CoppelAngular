@@ -54,7 +54,13 @@ export class ModalDepartamentoComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('La Departamento ha sido Creada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo Crear la Departamento','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Departamento!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {
@@ -75,7 +81,13 @@ export class ModalDepartamentoComponent implements OnInit {
             this._compartidoServico.mostrarAlerta('La Departamento ha sido Editada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo actualizar la Departamento','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Departamento!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {

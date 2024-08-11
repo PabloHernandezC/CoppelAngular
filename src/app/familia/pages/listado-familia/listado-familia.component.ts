@@ -81,7 +81,15 @@ export class ListadoFamiliaComponent implements OnInit, AfterViewInit {
               this._compartidoService.mostrarAlerta('No se pudo eliminar la Familia ' + familia.nombreFamilia,'Error!')
             }
           }, 
-          error: (e) => {}
+          error: (e) => {
+            Swal.fire({
+              title: 'No se pudo eliminar la Familia!',
+              text: e.error.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
+          }
         })
       }
     })

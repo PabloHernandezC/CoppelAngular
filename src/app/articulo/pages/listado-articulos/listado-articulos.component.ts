@@ -47,7 +47,16 @@ export class ListadoArticulosComponent implements OnInit, AfterViewInit {
           this.existe = data.resultado
         }
       },
-      error: error => console.log(Error),
+      error: error => {
+        Swal.fire({
+          title: 'No se pudo validar el SKU',
+          text: error.error,
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+        ,
       complete: () => this.elegirOpcion(opcion)
     })
   }
@@ -114,9 +123,25 @@ export class ListadoArticulosComponent implements OnInit, AfterViewInit {
         next: data => {
           if(data.isExitoso){
             nuevo.nuevoArticulo = data.resultado[0];
+          }else {
+            Swal.fire({
+              title: data.statusCode,
+              text: data.mensaje,
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar'
+            });  
           }
         },
-        error: error => console.log(error),
+        error: error => {
+          Swal.fire({
+            title: 'No se pudo editar el SKU',
+            text: error.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
+        },
         complete: () => {
           this.dialog.open(ModalArticuloComponent,{disableClose: true, width: '600px', data: nuevo})
         }
@@ -144,9 +169,25 @@ export class ListadoArticulosComponent implements OnInit, AfterViewInit {
         next: data => {
           if(data.isExitoso){
             nuevo.nuevoArticulo = data.resultado[0];
+          }else {
+            Swal.fire({
+              title: data.statusCode,
+              text: data.mensaje,
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar'
+            });  
           }
         },
-        error: error => console.log(error),
+        error: error => {
+          Swal.fire({
+            title: 'No se pudo editar el SKU',
+            text: error.error,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
+        },
         complete: () => {
           this.dialog.open(ModalArticuloComponent,{disableClose: true, width: '600px', data: nuevo})
         }

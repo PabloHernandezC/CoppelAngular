@@ -22,13 +22,9 @@ const routes : Routes = [
     children: [
         {
             path:'',
-            redirectTo: 'dashboard', 
+            redirectTo: 'articulo', 
             pathMatch:'full',
         },
-      {
-        path:'dashboard', 
-        component: DashboardComponent,
-      },
       {
         path:'articulo',
         component:ListadoArticulosComponent,

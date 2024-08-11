@@ -43,7 +43,15 @@ export class ModalClasesComponent implements OnInit{
           this.listaDepartamentos = data.resultado;
         }
       },
-      error: error => console.log(error)
+      error: e => {
+        Swal.fire({
+          title: 'No se pudo actualizar la Departamento!',
+          text: e.error.mensaje,
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Aceptar',
+        })
+      }
     });
 
   }
@@ -71,7 +79,13 @@ export class ModalClasesComponent implements OnInit{
             this._compartidoServico.mostrarAlerta('La Clase ha sido Creada con Exito','Completo');
             this.modal.close("true");
           } else {
-            this._compartidoServico.mostrarAlerta('No se pudo Crear la Clase','Error!');
+            Swal.fire({
+              title: 'No se pudo Crear la Clase!',
+              text: data.mensaje,
+              icon: 'warning',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar',
+            })
           }
         },
         error: (e) => {
