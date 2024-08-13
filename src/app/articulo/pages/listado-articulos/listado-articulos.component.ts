@@ -217,7 +217,15 @@ export class ListadoArticulosComponent implements OnInit, AfterViewInit {
               this._compartidoService.mostrarAlerta('No se pudo eliminar la Especialidad ' + sku ,'Error!')
             }
           }, 
-          error: (e) => {}
+          error: (e) => {
+            Swal.fire({
+              title: 'Error',
+              text: e.error.mensaje,
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar'
+            });
+          }
         })
       }
     })
